@@ -66,7 +66,10 @@ int main()
             // if ((end(str) - cur) < 2)
             //     break;
             // else if()
-            if(str(cur,2)=="if")
+            if(str.substr(cur-begin(str),2)=="if")
+            {
+                
+            }
         }
     }
 }
