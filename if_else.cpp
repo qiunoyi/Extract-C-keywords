@@ -10,6 +10,11 @@ int if_else_if_else_num = 0;
 stack<char> sta;
 void sta_input(char c)
 {
+    if(sta.empty())
+    {
+        sta.push(c);
+        return;
+    }
     switch (c)
     {
     case '}':
@@ -41,15 +46,12 @@ void sta_input(char c)
         else
             ++if_else_num;
         break;
-    default:
-        cout << "字符输入错误" << endl;
-        break;
     }
 }
 int main()
 {
     //待处理字符串
-    string str = "   {if (abc)";
+    string str = "   {if (abc) else if else}";
     auto cur = begin(str);
     while (cur != end(str))
     {
@@ -58,18 +60,49 @@ int main()
         {
             ++cur;
         }
-        // if (cur == end(str))
-        //     break;
-        //判断是符号还是if，else，else if
+        //判断是不是ifelse
         if (isalnum(*cur))
         {
-            // if ((end(str) - cur) < 2)
-            //     break;
-            // else if()
-            if(str.substr(cur-begin(str),2)=="if")
+            if (str.substr(cur - begin(str), 2) == "if")
             {
-                
+                sta_input('1');
+                cur += 2;
+            }
+            else if (str.substr(cur - begin(str), 4) == "else")
+            {
+                if (str.substr(cur - begin(str), 7) == "else if")
+                {
+                    sta_input('2');
+                    cur += 7;
+                }
+                else
+                {
+                    sta_input('3');
+                    cur += 4;
+                }
+            }
+            else
+            {
+                while (isalnum(*cur))
+                {
+                    cur++;
+                }
             }
         }
+        //判断符号
+        else if (*cur == '{')
+        {
+            sta_input('{');
+            ++cur;
+        }
+        else if (*cur == '}')
+        {
+            sta_input('}');
+            ++cur;
+        }
+        else
+            ++cur;
     }
+    cout<<"if_else_if_else_num"<<if_else_if_else_num<<endl;
+    cout<<"if_else_num"<<if_else_num<<endl;
 }
