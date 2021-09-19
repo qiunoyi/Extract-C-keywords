@@ -10,7 +10,7 @@ int if_else_if_else_num = 0;
 stack<char> sta;
 void sta_input(char c)
 {
-    if(sta.empty())
+    if (sta.empty())
     {
         sta.push(c);
         return;
@@ -51,58 +51,62 @@ void sta_input(char c)
 int main()
 {
     //待处理字符串
-    string str = "   {if (abc) else if else}";
-    auto cur = begin(str);
-    while (cur != end(str))
+    ifstream input2("cpp.txt");
+    string str; //= "   {if (abc) else if else}";
+    while (getline(input2, str))
     {
-        //去空格
-        while (*cur == ' ')
+        auto cur = begin(str);
+        while (cur != end(str))
         {
-            ++cur;
-        }
-        //判断是不是ifelse
-        if (isalnum(*cur))
-        {
-            if (str.substr(cur - begin(str), 2) == "if")
+            //去空格
+            while (*cur == ' ')
             {
-                sta_input('1');
-                cur += 2;
+                ++cur;
             }
-            else if (str.substr(cur - begin(str), 4) == "else")
+            //判断是不是ifelse
+            if (isalnum(*cur))
             {
-                if (str.substr(cur - begin(str), 7) == "else if")
+                if (str.substr(cur - begin(str), 2) == "if")
                 {
-                    sta_input('2');
-                    cur += 7;
+                    sta_input('1');
+                    cur += 2;
+                }
+                else if (str.substr(cur - begin(str), 4) == "else")
+                {
+                    if (str.substr(cur - begin(str), 7) == "else if")
+                    {
+                        sta_input('2');
+                        cur += 7;
+                    }
+                    else
+                    {
+                        sta_input('3');
+                        cur += 4;
+                    }
                 }
                 else
                 {
-                    sta_input('3');
-                    cur += 4;
+                    while (isalnum(*cur))
+                    {
+                        cur++;
+                    }
                 }
+            }
+            //判断符号
+            else if (*cur == '{')
+            {
+                sta_input('{');
+                ++cur;
+            }
+            else if (*cur == '}')
+            {
+                sta_input('}');
+                ++cur;
             }
             else
-            {
-                while (isalnum(*cur))
-                {
-                    cur++;
-                }
-            }
+                ++cur;
         }
-        //判断符号
-        else if (*cur == '{')
-        {
-            sta_input('{');
-            ++cur;
-        }
-        else if (*cur == '}')
-        {
-            sta_input('}');
-            ++cur;
-        }
-        else
-            ++cur;
     }
-    cout<<"if_else_if_else_num"<<if_else_if_else_num<<endl;
-    cout<<"if_else_num"<<if_else_num<<endl;
+    cout << "if_else_if_else_num" << if_else_if_else_num << endl;
+    cout << "if_else_num" << if_else_num << endl;
 }
