@@ -10,8 +10,8 @@ if-else num: 2
 if-elseif-else num: 2
 ```
 关键字共定义为32个：
-| auto|	break|	case|	char|	const|	continue|	default|	do|
+|auto|break|case|char|const|continue|default|do|
 |--|--|--|--|--|--|--|--|
-| double|	else|	enum|	extern|	float|	for|	goto|	if|
-| int|	long|	register|	return|	short|	signed|	sizeof|	static|
-| struct|	switch|	typedef|	union|	unsigned|	void|	volatile|	while|
+|double|else|enum|extern|float|for|goto|if|
+|int|long|register|return|short|signed|sizeof|static|
+|struct|switch|typedef|union|unsigned|void|volatile|while|
