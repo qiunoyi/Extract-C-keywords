@@ -1,3 +1,6 @@
+//rank34的实现
+
+
 #pragma once
 #include <iostream>
 #include <stack>
@@ -106,6 +109,4 @@ void if_else(ifstream &input)
                 ++cur;
         }
     }
-    //cout << "if_else_if_else_num" << if_else_if_else_num << endl;
-    //cout << "if_else_num" << if_else_num << endl;
 }
