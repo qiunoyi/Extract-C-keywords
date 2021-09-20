@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <stack>
 #include <fstream>
@@ -48,12 +49,10 @@ void sta_input(char c)
         break;
     }
 }
-int main()
+void if_else(ifstream &input)
 {
-    //待处理字符串
-    ifstream input2("cpp.txt");
-    string str; //= "   {if (abc) else if else}";
-    while (getline(input2, str))
+    string str;
+    while (getline(input, str))
     {
         auto cur = begin(str);
         while (cur != end(str))
@@ -107,6 +106,6 @@ int main()
                 ++cur;
         }
     }
-    cout << "if_else_if_else_num" << if_else_if_else_num << endl;
-    cout << "if_else_num" << if_else_num << endl;
+    //cout << "if_else_if_else_num" << if_else_if_else_num << endl;
+    //cout << "if_else_num" << if_else_num << endl;
 }

@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -33,8 +33,6 @@ class Count
     int switch_num = 0;
     int case_num = 0;
     vector<int> cases;
-    int if_else_num = 0;
-    int if_elseif_else_num = 0;
     ifstream input;
 
 public:
@@ -92,33 +90,17 @@ public:
             case_num = 0;
         }
     }
-    void output()
+    void output(int rank)
     {
-        cout << total_num << endl
-             << switch_num << endl;
-        for (auto it : cases)
+        cout << "total num : " << total_num << endl;
+        if (rank > 1)
         {
-            cout << it << " ";
+            cout << "switch num : " << switch_num << endl;
+            cout << "case num : " ;
+            for (auto it : cases)
+            {
+                cout << it << " ";
+            }
         }
     }
 };
-int main()
-{
-    Input_KeyWords key("key.txt");
-    auto key_set = key.read();
-    Count code("cpp.txt");
-    code.count_total(key_set);
-    code.output();
-}
-//基本实现   已完成
-//用栈实现if else统计
-//划分函数
-
-
-
-//处理精度和细节
-//学习git
-//写报告
-
-//一行一行一个字母一个字母分析
-//输入{}还有if else 
