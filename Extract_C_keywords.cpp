@@ -1,5 +1,5 @@
-#include "if_else.h"
-#include "input.h"
+#include "rank12.h"
+#include "rank34.h"
 int main()
 {
     cout << "请输入您需要的关键字查找等级" << endl;
